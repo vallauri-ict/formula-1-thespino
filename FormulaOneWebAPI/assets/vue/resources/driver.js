@@ -1,0 +1,1 @@
+﻿const ResourceDriver = new _resource('Drivers');

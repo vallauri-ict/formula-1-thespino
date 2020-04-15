@@ -1,0 +1,1 @@
+﻿const ResourceCountry = new _resource('Countries');

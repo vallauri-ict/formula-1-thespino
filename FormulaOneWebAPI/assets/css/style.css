@@ -1,0 +1,14 @@
+﻿body {
+  font-family: "DM Sans", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.app-title {
+  color: #000000 !important;
+  cursor: default !important;
+  opacity: 1 !important;
+  font-size: 1.3em !important;
+}
