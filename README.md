@@ -32,3 +32,7 @@ root
 - Check DB connection string in project  `FormulaOneDll` in `DBTools` class. The DB may be located into `C\Dati` and have an active `C\Dati` connection. If not, create it in SQL Server or simply change the connection string.
 - Start Editing the desired project!
 
+
+## Database
+
+![Database structure](https://raw.githubusercontent.com/vallauri-ict/formula-1-thespino/master/assets/db_diagram.png)
