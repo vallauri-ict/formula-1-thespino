@@ -1,0 +1,1 @@
+const ResourceRace = new _resource('Races');

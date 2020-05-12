@@ -7,60 +7,64 @@ The complete diagram can be found here: [https://dbdiagram.io/d/5eb2dce339d18f55
 
 ## Country
 
-Table: countries
+Table: Countries
 Definition:
 | field       | type        | null? | key | default | extra |
 |-------------|-------------|-------|-----|---------|-------|
-| code		  | char(3)		| NO	| PK  |			| 		|
-| name		  | varchar(40)	| NO	|     |			| 		|
-| nationality | varchar(40)	| NO	|     |			| 		|
+| Code		  | char(3)		| NO	| PK  |			| 		|
+| Name		  | varchar(40)	| NO	|     |			| 		|
+| Nationality | varchar(40)	| NO	|     |			| 		|
 
 
 ## Driver
 
-Table: drivers
+Table: Drivers
 Definition:
 | field        | type           | null? | key | default | extra |
 |--------------|----------------|-------|-----|---------|-------|
-| id		   | int(11)		| NO	| PK  |			| AI	|
-| firstname	   | varchar(40)	| NO	|     |			| 		|
-| lasttname	   | varchar(40)	| NO	|     |			| 		|
-| dob		   | date			| NO	|     |			| 		|
-| pob		   | varchar(40)	| NO	|     |			| 		|
-| country_code | char(3)		| NO	| FK  |			| 		|
+| Id		   | int(11)		| NO	| PK  |			| AI	|
+| Firstname	   | varchar(40)	| NO	|     |			| 		|
+| Lasttname	   | varchar(40)	| NO	|     |			| 		|
+| Dob		   | date			| NO	|     |			| 		|
+| Pob		   | varchar(40)	| NO	|     |			| 		|
+| Country_Code | char(3)		| NO	| FK  |			| 		|
+
 Additional attributes:
+
 | field   | returns   |
 |---------|-----------|
-| country | Country	  |
-| teams   | Team[]	  |
+| Country | Country	  |
+| Teams   | Team[]	  |
 
 
 ## Team
 
-Table: teams
+Table: Teams
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
-| id		 	 | int(11)		| NO	| PK  |			| AI	|
-| name		 	 | varchar(40)	| NO	|     |			| 		|
-| fullname	 	 | varchar(80)	| NO	|     |			| 		|
-| powerunit	 	 | varchar(40)	| NO	|     |			| 		|
-| technicalchief | varchar(40)	| NO	|     |			| 		|
-| chassis	 	 | varchar(40)	| NO	|     |			| 		|
-| country_code   | char(3)		| NO	| FK  |			| 		|
-| driver1_id 	 | int(11)		| NO	| FK  |			| 		|
-| driver2_id 	 | int(11)		| NO	| FK  |			| 		|
+| Id		 	 | int(11)		| NO	| PK  |			| AI	|
+| Name		 	 | varchar(40)	| NO	|     |			| 		|
+| FullName	 	 | varchar(80)	| NO	|     |			| 		|
+| PowerUnit	 	 | varchar(40)	| NO	|     |			| 		|
+| TechnicalChief | varchar(40)	| NO	|     |			| 		|
+| Chassis	 	 | varchar(40)	| NO	|     |			| 		|
+| Country_code   | char(3)		| NO	| FK  |			| 		|
+| Driver1_id 	 | int(11)		| NO	| FK  |			| 		|
+| Driver2_id 	 | int(11)		| NO	| FK  |			| 		|
+
 Additional attributes:
+
 | field   | returns   |
 |---------|-----------|
-| country | Country   |
-| driver1 | Driver    |
-| driver2 | Driver    |
+| Country | Country   |
+| Driver1 | Driver    |
+| Driver2 | Driver    |
 
 
 ## Circuit
 
-Table: circuits
+Table: Circuits
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
@@ -70,7 +74,9 @@ Definition:
 | recordlap		 | int(10)		| YES	|     |	NULL	| 		|
 | location	 	 | varchar(80)	| NO	|     |			| 		|
 | country_code   | char(3)		| NO	| FK  |			| 		|
+
 Additional attributes:
+
 | field   | returns   |
 |---------|-----------|
 | country | Country   |
@@ -79,49 +85,53 @@ Additional attributes:
 
 ## Race
 
-Table: races
+Table: Races
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
-| id		 	 | int(11)		| NO	| PK  |			| AI	|
-| name		 	 | varchar(40)	| NO	|     |			| 		|
-| laps		 	 | int(10)		| YES	|     |	NULL	| 		|
-| date			 | date			| YES	|     |	NULL	| 		|
-| circuit_id     | int(11)		| YES   | FK  | NULL	| 		|
+| Id		 	 | int(11)		| NO	| PK  |			| AI	|
+| Name		 	 | varchar(40)	| NO	|     |			| 		|
+| Laps		 	 | int(10)		| YES	|     |	NULL	| 		|
+| Date			 | date			| YES	|     |	NULL	| 		|
+| Circuit_Id     | int(11)		| YES   | FK  | NULL	| 		|
+
 Additional attributes:
+
 | field   | returns     |
 |---------|-------------|
-| circuit | Circuit     |
-| scores  | RaceScore[] |
+| Circuit | Circuit     |
+| Scores  | RaceScore[] |
 
 
 ## Score
 
-Table: scores
+Table: Scores
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
-| id		 	 | int(11)		| NO	| PK  |			| AI	|
-| score		 	 | int(10)		| NO	|     |			| 		|
-| details	 	 | varchar(500)	| NO	|     |	""		| 		|
+| Id		 	 | int(11)		| NO	| PK  |			| AI	|
+| Score		 	 | int(10)		| NO	|     |			| 		|
+| Details	 	 | varchar(500)	| NO	|     |	""		| 		|
 
 
 
 ## [Pivot] RaceScore
 
-Table: races_scores
+Table: Races_Scores
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
-| id		 	 | int(11)		| NO	| PK  |			| AI	|
-| position	 	 | int(10)		| NO	|     |			| 		|
-| fastestlap 	 | int(10)		| YES	|     |	NULL	| 		|
-| driver_id 	 | int(11)		| NO	| FK  |			| 		|
-| score_id 	 	 | int(11)		| NO	| FK  |			| 		|
-| race_id 	 	 | int(11)		| NO	| FK  |			| 		|
+| Id		 	 | int(11)		| NO	| PK  |			| AI	|
+| Position	 	 | int(10)		| NO	|     |			| 		|
+| FastestLap 	 | int(10)		| YES	|     |	NULL	| 		|
+| Driver_Id 	 | int(11)		| NO	| FK  |			| 		|
+| Score_Id 	 	 | int(11)		| NO	| FK  |			| 		|
+| Race_Id 	 	 | int(11)		| NO	| FK  |			| 		|
+
 Additional attributes:
+
 | field   | returns   |
 |---------|-----------|
-| driver  | Driver    |
-| score   | Score     |
-| race    | Race      |
+| Driver  | Driver    |
+| Score   | Score     |
+| Race    | Race      |

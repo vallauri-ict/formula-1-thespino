@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.IO;
 using FormulaOneDll.Database.Models;
 using Newtonsoft.Json;
+using SqlKata.Compilers;
+using SqlKata.Execution;
 
 namespace FormulaOneDll.Database
 {
@@ -138,6 +140,7 @@ namespace FormulaOneDll.Database
                     reader.GetString(2),
                     reader.GetDateTime(3),
                     reader.GetString(4),
+                    reader.GetString(5),
                     Countries__GetAll()[reader.GetString(5)]
                 );
                 this.drivers.Add(driver.Id, driver);
@@ -180,12 +183,12 @@ namespace FormulaOneDll.Database
                     reader.GetInt32(0),
                     reader.GetString(1),
                     reader.GetString(2),
-                    Countries__GetAll()[reader.GetString(3)],
+                    reader.GetString(3),
                     reader.GetString(4),
                     reader.GetString(5),
                     reader.GetString(6),
-                    Drivers__GetAll()[reader.GetInt32(7)],
-                    Drivers__GetAll()[reader.GetInt32(8)]
+                    reader.GetInt32(7),
+                    reader.GetInt32(8)
                 );
                 this.teams.Add(team.Id, team);
             }
@@ -227,6 +230,236 @@ namespace FormulaOneDll.Database
                 return false;
             }
         }
+
+        #endregion
+
+
+
+        #region API CRUD
+
+        #region Countries
+
+        public PaginationResult<Country> API___Countries_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Country.TABLE)
+                    .Paginate<Country>(page, limit);
+
+            return db.Query(Country.TABLE)
+                .WhereLike("Code", $"%{query}%")
+                .OrWhereLike("Name", $"%{query}%")
+                .Paginate<Country>(page, limit);
+        }
+
+        public Country API___Countries_Get(string code)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Country.TABLE)
+                .Where("Code", "=", code)
+                .FirstOrDefault<Country>();
+
+            return ret;
+        }
+
+        #endregion
+
+
+        #region Drivers
+
+        public PaginationResult<Driver> API___Drivers_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Driver.TABLE)
+                    .Paginate<Driver>(page, limit);
+
+            return db.Query(Driver.TABLE)
+                .WhereLike("FirstName", $"%{query}%")
+                .OrWhereLike("LastName", $"%{query}%")
+                .OrWhereLike("Pob", $"%{query}%")
+                .Paginate<Driver>(page, limit);
+        }
+
+        public Driver API___Drivers_Get(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Driver.TABLE)
+                .Where("Id", "=", id)
+                .FirstOrDefault<Driver>();
+
+            return ret;
+        }
+
+        #endregion
+
+
+        #region Teams
+
+        public PaginationResult<Team> API___Teams_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Team.TABLE)
+                    .Paginate<Team>(page, limit);
+
+            return db.Query(Team.TABLE)
+                .WhereLike("Name", $"%{query}%")
+                .OrWhereLike("FullName", $"%{query}%")
+                .Paginate<Team>(page, limit);
+        }
+
+        public Team API___Teams_Get(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Team.TABLE)
+                .Where("Id", "=", id)
+                .FirstOrDefault<Team>();
+
+            return ret;
+        }
+
+        #endregion
+
+
+        #region Circuits
+
+        public PaginationResult<Circuit> API___Circuits_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Circuit.TABLE)
+                    .Paginate<Circuit>(page, limit);
+
+            return db.Query(Circuit.TABLE)
+                .WhereLike("Name", $"%{query}%")
+                .OrWhereLike("Location", $"%{query}%")
+                .Paginate<Circuit>(page, limit);
+        }
+
+        public Circuit API___Circuits_Get(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Circuit.TABLE)
+                .Where("Id", "=", id)
+                .FirstOrDefault<Circuit>();
+
+            return ret;
+        }
+
+        #endregion
+
+
+        #region Races
+
+        public PaginationResult<Race> API___Races_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Race.TABLE)
+                    .Paginate<Race>(page, limit);
+
+            return db.Query(Race.TABLE)
+                .WhereLike("Name", $"%{query}%")
+                .OrWhereLike("Date", $"%{query}%")
+                .Paginate<Race>(page, limit);
+        }
+
+        public Race API___Races_Get(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Race.TABLE)
+                .Where("Id", "=", id)
+                .FirstOrDefault<Race>();
+
+            return ret;
+        }
+
+        #endregion
+
+
+        #region Results
+
+        public PaginationResult<Result> API___Results_List(int page, int limit = 10, string query = "")
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+
+            if (query == "")
+                return db.Query(Result.TABLE)
+                    .Paginate<Result>(page, limit);
+
+            return db.Query(Result.TABLE)
+                .WhereLike("Position", $"%{query}%")
+                .OrWhereLike("Score", $"%{query}%")
+                .OrWhereLike("FastestLap", $"%{query}%")
+                .Paginate<Result>(page, limit);
+        }
+
+        public Result API___Results_Get(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Result.TABLE)
+                .Where("Id", "=", id)
+                .FirstOrDefault<Result>();
+
+            return ret;
+        }
+
+        public IEnumerable<Result> API___Results_OfRace(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Result.TABLE)
+                .Where("Race_Id", "=", id)
+                .Get<Result>();
+
+            return ret;
+        }
+
+        #endregion
 
         #endregion
 

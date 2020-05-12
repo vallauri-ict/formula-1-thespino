@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace FormulaOneDll.Database.Models
 {
-    [DataContract(Name = "Country")]
-    public class Country
+    [DataContract]
+    public class Country : IModel
     {
+        public const string TABLE = "Countries";
+
+
         public Country(string code, string name)
         {
             this.Code = code;
             this.Name = name;
         }
 
-        [DataMember(Name= "Code")]
+
+        [DataMember]
         public string Code { get; set; }
 
-        [DataMember(Name = "Name")]
+        [DataMember]
         public string Name { get; set; }
 
 
@@ -27,5 +31,17 @@ namespace FormulaOneDll.Database.Models
         {
             return $"{this.Name} ({this.Code})";
         }
+
+
+
+        #region FOR API
+
+        public Country(string code, string name, long row_num)
+        {
+            this.Code = code;
+            this.Name = name;
+        }
+
+        #endregion
     }
 }

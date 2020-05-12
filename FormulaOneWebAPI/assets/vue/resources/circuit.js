@@ -1,0 +1,1 @@
+const ResourceCircuit = new _resource('Circuits');

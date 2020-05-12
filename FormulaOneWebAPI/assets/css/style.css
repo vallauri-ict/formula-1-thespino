@@ -1,5 +1,23 @@
-﻿body {
-  font-family: "DM Sans", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+﻿@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+body {
+  font-family: "Play", "DM Sans", "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.el-menu {
+  background: #E10600;
+  border-bottom: none;
+  box-shadow: -2px 0 8px -2px rgba(0,0,0,0.15);
+}
+
+.el-menu--horizontal>.el-menu-item {
+  color: #F8F8F8;
+  background: none !important;
+  background-color: none !important;
+}
+
+.el-menu--horizontal>.el-menu-item:hover {
+  color: #FFFFFF !important;
 }
 
 .text-center {
@@ -7,8 +25,61 @@
 }
 
 .app-title {
-  color: #000000 !important;
+  /* color: #FFFFFF !important;
   cursor: default !important;
-  opacity: 1 !important;
+  opacity: 1 !important; */
   font-size: 1.3em !important;
+  line-height: 58px !important;
+  height: 58px !important;
+}
+
+.el-pagination {
+  padding: 30px;
+}
+
+
+.standard-card {
+  padding: 15px;
+}
+
+.standard-card .el-card__body {
+  padding: 0;
+  height: 110px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+}
+
+.standard-card .el-card__body .div-info {
+  padding-left: 20px;
+  display: block;
+  order: 0;
+  flex: 1 1 auto;
+  align-self: auto;
+}
+
+.standard-card .el-card__body img {
+  display: block;
+  max-height: 110px;
+  max-width: 100px;
+  position: absolute;
+}
+.standard-card .el-card__body img.bottom {
+  bottom: 0;
+  right: 0;
+}
+.standard-card .el-card__body img.center {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.standard-card .el-card__body .div-info .standard-card-big {
+  font-size: 1.3em;
+  font-weight: bold;
 }

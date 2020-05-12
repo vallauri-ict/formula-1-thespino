@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 using FormulaOneDll.Database;
 using FormulaOneDll.Database.Models;
+using FormulaOneWebAPI.Resources;
 
 namespace FormulaOneWebAPI.Controllers
 {
@@ -15,30 +11,15 @@ namespace FormulaOneWebAPI.Controllers
         private Tools DB = new Tools();
 
         // GET: api/Countries
-        public IEnumerable<Country> Get()
+        public ListResource<Country> Get(int page = 1, int limit = 10, string query = "")
         {
-            return DB.Countries__GetAll().Values.ToList();
+            return new ListResource<Country>(DB.API___Countries_List(page, limit, query), page);
         }
 
         // GET: api/Countries/AD
         public Country Get(string code)
         {
-            return DB.Countries__Get(code);
-        }
-
-        // POST: api/Countries
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Countries/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Countries/5
-        public void Delete(int id)
-        {
+            return DB.API___Countries_Get(code);
         }
     }
 }

@@ -11,12 +11,19 @@ namespace FormulaOneWebAPI
         {
             // Servizi e configurazione dell'API Web
 
-            // Route dell'API Web
+            // Route specifiche delle API
             config.Routes.MapHttpRoute(
                 name: "Countries",
                 routeTemplate: "api/Countries/{code}",
                 defaults: new { controller = "Countries", action = "Get" },
                 constraints: new { code = @"\w+" }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ResultsOfRace",
+                routeTemplate: "api/Results/of-race/{id}",
+                defaults: new { controller = "Results", action = "OfRace" },
+                constraints: new { id = @"\d+" }
             );
 
             config.MapHttpAttributeRoutes();
