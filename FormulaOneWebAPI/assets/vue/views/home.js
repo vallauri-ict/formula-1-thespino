@@ -18,7 +18,7 @@
       </el-row>
 
       <el-row class="text-center">
-        <el-button v-for="(link) in links" type="primary" :to="link.route" @click="handleActionClick(link)">{{ link.title }}</el-button>
+        <el-button v-for="(link) in links" type="primary" :to="link.route" @click="handleActionClick(link)" style="margin-bottom:10px">{{ link.title }}</el-button>
       </el-row>
     </div>
   `,

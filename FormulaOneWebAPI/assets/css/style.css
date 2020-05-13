@@ -8,10 +8,11 @@ body {
 .el-menu {
   background: #e10600;
   border-bottom: none !important;
-  box-shadow: -2px 0 8px -2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 8px -1px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
 }
 
-.el-menu--horizontal > .el-menu-item {
+.el-menu--horizontal > .el-menu-item, .el-menu--horizontal > .el-menu-item i {
   color: #f8f8f8;
   background: none !important;
   background-color: none !important;
@@ -19,6 +20,44 @@ body {
 
 .el-menu--horizontal > .el-menu-item:hover {
   color: #ffffff !important;
+}
+
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.bottom-navigation li {
+  float: none !important;
+  display: inline-block !important;
+  padding: 0 20px;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding-top: 12px !important;
+  line-height: 1 !important;
+}
+
+.bottom-navigation i {
+  margin-right: 0 !important;
+}
+
+.bottom-navigation span {
+  font-size: 0.75em !important;
+}
+
+@media only screen and (max-width: 530px) {
+  .bottom-navigation li {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .bottom-navigation li {
+    padding: 0 5px;
+  }
 }
 
 .text-center {
@@ -79,6 +118,10 @@ body {
 .standard-card .el-card__body .div-info .standard-card-big {
   font-size: 1.3em;
   font-weight: bold;
+}
+
+.el-pagination {
+  white-space: break-spaces !important;
 }
 
 
