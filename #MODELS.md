@@ -8,6 +8,7 @@ The complete diagram can be found here: [https://dbdiagram.io/d/5eb2dce339d18f55
 ## Country
 
 Table: Countries
+
 Definition:
 | field       | type        | null? | key | default | extra |
 |-------------|-------------|-------|-----|---------|-------|
@@ -18,6 +19,7 @@ Definition:
 ## Driver
 
 Table: Drivers
+
 Definition:
 | field        | type           | null? | key | default | extra |
 |--------------|----------------|-------|-----|---------|-------|
@@ -33,6 +35,7 @@ Definition:
 ## Team
 
 Table: Teams
+
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
@@ -51,6 +54,7 @@ Definition:
 ## Circuit
 
 Table: Circuits
+
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
@@ -66,6 +70,7 @@ Definition:
 ## Race
 
 Table: Races
+
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
@@ -80,6 +85,7 @@ Definition:
 ## Result
 
 Table: Results
+
 Definition:
 | field      	 | type         | null? | key | default | extra |
 |----------------|--------------|-------|-----|---------|-------|
