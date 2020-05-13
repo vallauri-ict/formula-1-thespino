@@ -30,7 +30,7 @@
       <el-dialog v-if="selected != null" title="Driver details" :visible.sync="dialogVisible">
         <el-row>
           <el-col :sm="24" :md="14" style="line-height:2em">
-            <table style="width:100%;margin-top:30px">
+            <table style="width:100%;margin:30px 0">
               <tbody>
                 <tr>
                   <td>First name</td>
@@ -41,16 +41,20 @@
                   <td><b>{{ selected.LastName }}<b></td>
                 </tr>
                 <tr>
-                  <td>DOB</td>
+                  <td>Date of birth</td>
                   <td><b>{{ new Date(selected.Dob).toLocaleDateString() }}<b></td>
                 </tr>
                 <tr>
-                  <td>POB</td>
+                  <td>Place of birth</td>
                   <td><b>{{ selected.Pob }}<b></td>
                 </tr>
                 <tr>
                   <td>Country</td>
                   <td><b>{{ selected.Country.Name }}<b></td>
+                </tr>
+                <tr>
+                  <td>Total score</td>
+                  <td><b>{{ selected.TotalScore }}pts<b></td>
                 </tr>
               </tbody>
             </table>
@@ -63,7 +67,7 @@
 
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible=false">Close</el-button>
-          <el-button type="primary" @click="handleMoreInfoClick(selected)">More info</el-button>
+          <el-button type="primary" icon="el-icon-info" @click="handleMoreInfoClick(selected)">More info</el-button>
         </div>
       </el-dialog>
 

@@ -30,7 +30,7 @@ const ViewRaces = {
       <el-dialog v-if="selected != null" title="Race details" :visible.sync="dialogVisible">
         <el-row>
           <el-col :sm="24" :md="14" style="line-height:2em">
-            <table style="width:100%;margin-top:30px">
+            <table style="width:100%;margin:30px 0">
               <tbody>
                 <tr>
                   <td>Name</td>

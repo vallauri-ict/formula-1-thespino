@@ -12,7 +12,7 @@ namespace FormulaOneDll.Database.Models
     {
         public const string TABLE = "Drivers";
 
-
+        private long? total_score = null;
         private string country_code;
         private Country country;
 
@@ -60,6 +60,22 @@ namespace FormulaOneDll.Database.Models
             set
             {
                 country = value;
+            }
+        }
+
+        [DataMember]
+        public long? TotalScore
+        {
+            get
+            {
+                if (total_score == null)
+                    total_score = new Tools().API___Drivers_TotalScore(this.Id);
+
+                return total_score;
+            }
+            set
+            {
+                total_score = value;
             }
         }
 

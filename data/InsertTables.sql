@@ -292,19 +292,20 @@ INSERT INTO [dbo].[Teams]
 	TechnicalChief,
 	Chassis,
 	Driver1_Id,
-	Driver2_Id
+	Driver2_Id,
+	ImageUrl
 )
 VALUES
-('Alfa Romeo Racing', 'Alfa Romeo Racing', 'CH', 'Ferrari', 'Jan Monchaux', 'C38', 20, 10),
-('Ferrari', 'Scuderia Ferrari Mission Winnow', 'IT', 'Ferrari', 'Mattia Binotto', 'SF90',20,10),
-('Red Bull Racing', 'Aston Martin Red Bull Racing', 'GB', 'Honda', 'Pierre Waché', 'RB15',20,10),
-('Haas', 'Haas F1 Team', 'US', 'Ferrari', 'Rob Taylor', 'VF-19', 20, 10),
-('McLaren', 'McLaren F1 Team', 'GB', 'Renault', 'James Key', 'MCL34', 20, 10),
-('Mercedes', 'Mercedes AMG Petronas Motorsport', 'GB', 'Mercedes', 'James Allison', 'W10',20,10),
-('AlphaTauri', '	Scuderia AlphaTauri Honda', 'IT', 'Honda', 'Jody Eggington', 'STR14', 20, 10),
-('Racing Point', 'SportPesa Racing Point F1 Team', 'GB', 'BWT Mercedes', 'Andrew Green', 'RP19', 20, 10),
-('Williams', 'ROKiT Williams Racing', 'GB', 'Mercedes', 'TBC', 'FW42', 20, 10),
-('Renault', 'Renault F1 Team', 'GB', 'Renault', 'Nick Chester', 'R.S.19',20,10);
+('Alfa Romeo Racing', 'Alfa Romeo Racing', 'CH', 'Ferrari', 'Jan Monchaux', 'C38', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/alfa-romeo-racing-logo.png'),
+('Ferrari', 'Scuderia Ferrari Mission Winnow', 'IT', 'Ferrari', 'Mattia Binotto', 'SF90',20,10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/ferrari-logo.png'),
+('Red Bull Racing', 'Aston Martin Red Bull Racing', 'GB', 'Honda', 'Pierre Waché', 'RB15',20,10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/red-bull-racing-logo.png'),
+('Haas', 'Haas F1 Team', 'US', 'Ferrari', 'Rob Taylor', 'VF-19', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/haas-f1-team-logo.png'),
+('McLaren', 'McLaren F1 Team', 'GB', 'Renault', 'James Key', 'MCL34', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/mclaren-logo.png'),
+('Mercedes', 'Mercedes AMG Petronas Motorsport', 'GB', 'Mercedes', 'James Allison', 'W10',20,10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/mercedes-logo.png'),
+('AlphaTauri', '	Scuderia AlphaTauri Honda', 'IT', 'Honda', 'Jody Eggington', 'STR14', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/alphatauri-logo.png'),
+('Racing Point', 'SportPesa Racing Point F1 Team', 'GB', 'BWT Mercedes', 'Andrew Green', 'RP19', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/racing-point-logo.png'),
+('Williams', 'ROKiT Williams Racing', 'GB', 'Mercedes', 'TBC', 'FW42', 20, 10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/williams-logo.png'),
+('Renault', 'Renault F1 Team', 'GB', 'Renault', 'Nick Chester', 'R.S.19',20,10, 'https://www.formula1.com/content/dam/fom-website/teams/2020/renault-logo.png');
 
 
 

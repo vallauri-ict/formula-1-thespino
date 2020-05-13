@@ -21,7 +21,7 @@ namespace FormulaOneDll.Database.Models
         private Driver driver2 = null;
 
 
-        public Team(int id, string name, string fullTeamName, string powerUnit, string technicalChief, string chassis, Country country, Driver driver1, Driver driver2)
+        public Team(int id, string name, string fullTeamName, string powerUnit, string technicalChief, string chassis, string imageurl, Country country, Driver driver1, Driver driver2)
         {
             this.Id = id;
             this.Name = name;
@@ -29,6 +29,7 @@ namespace FormulaOneDll.Database.Models
             this.PowerUnit = powerUnit;
             this.TechnicalChief = technicalChief;
             this.Chassis = chassis;
+            this.ImageUrl = imageurl;
 
             this.Country = country;
             this.Driver1 = driver1;
@@ -53,6 +54,9 @@ namespace FormulaOneDll.Database.Models
 
         [DataMember]
         public string Chassis { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
 
         [DataMember]
         public Country Country
@@ -112,22 +116,25 @@ namespace FormulaOneDll.Database.Models
 
         #region FOR API
 
-        public Team(int id, string name, string fullName, string powerUnit, string technicalChief, string chassis, string country_code, int driver1_id, int driver2_id)
+        public Team(int id, string name, string fullName, string powerUnit, string technicalChief, string chassis, string imageurl, string country_code, int driver1_id, int driver2_id)
         {
             var db = new Tools();
 
             this.Id = id;
             this.Name = name;
             this.FullName = fullName;
-            this.Country = db.API___Countries_Get(country_code);
             this.PowerUnit = powerUnit;
             this.TechnicalChief = technicalChief;
             this.Chassis = chassis;
-            this.Driver1 = db.API___Drivers_Get(driver1_id);
-            this.Driver2 = db.API___Drivers_Get(driver2_id);
+            this.ImageUrl = imageurl;
+
+
+            this.country_code = country_code;
+            this.driver1_id = driver1_id;
+            this.driver2_id = driver2_id;
         }
 
-        public Team(int id, string name, string fullName, string powerUnit, string technicalChief, string chassis, string country_code, int driver1_id, int driver2_id, long row_num)
+        public Team(int id, string name, string fullName, string powerUnit, string technicalChief, string chassis, string imageurl, string country_code, int driver1_id, int driver2_id, long row_num)
         {
             this.Id = id;
             this.Name = name;
@@ -135,6 +142,7 @@ namespace FormulaOneDll.Database.Models
             this.PowerUnit = powerUnit;
             this.TechnicalChief = technicalChief;
             this.Chassis = chassis;
+            this.ImageUrl = imageurl;
 
             this.country_code = country_code;
             this.driver1_id = driver1_id;

@@ -7,7 +7,7 @@ Every model, of cource, can have additional fields in addition of the ones in th
 
 - The prefix for all routes is `/api/`
 - Any route that returns an Array should have pagination, so additional (but optional) query parameters might be: `page(\d)&limit(\d)`
-- Another parameter for Array routes is `query` which means that the server will return only the elements that match that query. It can search in the name but even in other fields. Each route can define more specific query types, but in general this is a good practise
+- Another parameter for Array routes is `query` which means that the server will return only the count that match that query. It can search in the name but even in other fields. Each route can define more specific query types, but in general this is a good practise
 - To prevent recursion, each additional attribute in models should be a method or a property that returns the instance of a specific object ONLY IF CALLED, and computed at the first interaction, otherwise loops can create. **Do not instanciate relational attributes in constructor**. Here you can see routes "Races" and "Scores" that will create a loop due to the Models structure
 
 
@@ -18,17 +18,17 @@ Every model, of cource, can have additional fields in addition of the ones in th
 Returns list of all countries
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
 		    { Country },
 		    { Country },
 	    ]
     }
 
-### GET countries/{code ({3})}
+### GET countries/{code ({2})}
 Returns specific country
 
     { Country }
@@ -41,11 +41,11 @@ Returns specific country
 Returns list of all drivers
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
 		    { Driver },
 		    { Driver },
 	    ]
@@ -64,11 +64,11 @@ Returns specific driver
 Returns list of all teams
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
 		    { Team },
 		    { Team },
 	    ]
@@ -87,11 +87,11 @@ Returns specific team
 Returns list of all circuits
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
 		    { Circuit },
 		    { Circuit },
 	    ]
@@ -110,11 +110,11 @@ Returns specific circuit
 Returns list of all races, eventually filtered between dates if specified
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
 		    { Race },
 		    { Race },
 	    ]
@@ -127,23 +127,31 @@ Returns specific race
 
 
 
-## Scores
+## Results
 
-### GET scores
-Returns list of all scores
+### GET results
+Returns list of all results
 
     {
-	    page: 1,
-	    pages: 5,
-	    limit: 15,
-	    elements: 15,
-	    data: [
-		    { Score },
-		    { Score },
+	    Page: 1,
+	    Pages: 5,
+	    Limit: 15,
+	    Count: 15,
+	    Data: [
+		    { Result },
+		    { Result },
 	    ]
     }
 
-### GET scores/{id (\d)}
-Returns specific score
+### GET results/{id (\d)}
+Returns specific result
 
-    { Score }
+    { Result }
+
+### GET results/of-race/{id (\d)}
+Returns all results of specific race
+
+    [
+		{ Result },
+		{ Result },
+	]

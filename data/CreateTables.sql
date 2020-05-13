@@ -22,6 +22,7 @@ CREATE TABLE [Teams] (
   [PowerUnit] varchar(40) NOT NULL,
   [TechnicalChief] varchar(40) NOT NULL,
   [Chassis] varchar(40) NOT NULL,
+  [ImageUrl] varchar(255) DEFAULT (null),
   [Country_Code] char(2) NOT NULL,
   [Driver1_id] int NOT NULL,
   [Driver2_id] int NOT NULL

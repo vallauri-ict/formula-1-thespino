@@ -187,8 +187,9 @@ namespace FormulaOneDll.Database
                     reader.GetString(4),
                     reader.GetString(5),
                     reader.GetString(6),
-                    reader.GetInt32(7),
-                    reader.GetInt32(8)
+                    reader.GetString(7),
+                    reader.GetInt32(8),
+                    reader.GetInt32(9)
                 );
                 this.teams.Add(team.Id, team);
             }
@@ -303,6 +304,19 @@ namespace FormulaOneDll.Database
                 .FirstOrDefault<Driver>();
 
             return ret;
+        }
+
+        public long? API___Drivers_TotalScore(int id)
+        {
+            var con = new SqlConnection(CONNSTR);
+            var compiler = new SqlServerCompiler();
+
+            var db = new QueryFactory(con, compiler);
+            var ret = db.Query(Result.TABLE)
+                .Where("Driver_Id", "=", id)
+                .Sum<long?>("Score");
+
+            return ret == null ? 0 : ret;
         }
 
         #endregion

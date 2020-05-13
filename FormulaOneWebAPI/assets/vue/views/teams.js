@@ -10,66 +10,75 @@
         @change="getList"
       ></el-input>
 
-      <el-table
-        :data="tableData"
-        style="width: 100%">
-        <el-table-column
-          prop="Id"
-          label="Id"
-          sortable
-          width="60">
-        </el-table-column>
-        <el-table-column
-          prop="Name"
-          label="Name"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="FullName"
-          label="FullName"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="Country.Code"
-          label="Country"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="PowerUnit"
-          label="PowerUnit"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="TechnicalChief"
-          label="TechnicalChief"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="Chassis"
-          label="Chassis"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="Driver1.LastName"
-          label="FirstDriver"
-          sortable>
-        </el-table-column>
-        <el-table-column
-          prop="Driver2.LastName"
-          label="FirstDriver"
-          sortable>
-        </el-table-column>
 
-        <el-table-column
-          label="Actions"
-          width="100">
-          <span slot-scope="scope">
-            <el-link :href="'https://www.formula1.com/en/teams/' + convertName(scope) + '.html'" target="_blank" :underline="false">
-              <i class="el-icon-info" style="display:block;font-size:1.5em;padding:5px"></i>
-            </el-link>
-          </span>
-        </el-table-column>
-      </el-table>
+      <div v-if="tableData.length == 0" class="text-center" style="opacity:0.7">
+        <p>No data</p>
+      </div>
+
+      <el-row style="padding:15px">
+        <el-col v-for="team of tableData" :sm="24" :md="12" class="standard-card">
+          <el-card shadow="hover" @click.native="handleCardClick(team)">
+            <div class="div-info">
+              <span class="standard-card-small">{{ team.PowerUnit }}</span>
+              <br>
+              <span class="standard-card-big">{{ team.Name }}</span>
+            </div>
+            <img :src="team.ImageUrl" class="center">
+          </el-card>
+        </el-col>
+      </el-row>
+
+      <el-dialog v-if="selected != null" title="Team details" :visible.sync="dialogVisible">
+        <el-row>
+          <el-col :sm="24" :md="14" style="line-height:2em">
+            <table style="width:100%;margin:30px 0">
+              <tbody>
+                <tr>
+                  <td>Full name</td>
+                  <td><b>{{ selected.FullName }}<b></td>
+                </tr>
+                <tr>
+                  <td>Short name</td>
+                  <td><b>{{ selected.Name }}<b></td>
+                </tr>
+                <tr>
+                  <td>Power unit</td>
+                  <td><b>{{ selected.PowerUnit }}<b></td>
+                </tr>
+                <tr>
+                  <td>Technical Chief</td>
+                  <td><b>{{ selected.TechnicalChief }}<b></td>
+                </tr>
+                <tr>
+                  <td>Chassis</td>
+                  <td><b>{{ selected.Chassis }}<b></td>
+                </tr>
+                <tr>
+                  <td>Country</td>
+                  <td><b>{{ selected.Country.Name }}<b></td>
+                </tr>
+                <tr>
+                  <td>First driver</td>
+                  <td><b>{{ selected.Driver1.LastName }} {{ selected.Driver1.FirstName }}<b></td>
+                </tr>
+                <tr>
+                  <td>Second driver</td>
+                  <td><b>{{ selected.Driver2.LastName }} {{ selected.Driver2.FirstName }}<b></td>
+                </tr>
+              </tbody>
+            </table>
+          </el-col>
+
+          <el-col :sm="24" :md="10">
+            <img :src="selected.ImageUrl" style="width:100%">
+          </el-col>
+        </el-row>
+
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible=false">Close</el-button>
+          <el-button type="primary" icon="el-icon-info" @click="handleMoreInfoClick(selected)">More info</el-button>
+        </div>
+      </el-dialog>
 
       <el-pagination
         @size-change="getList"
@@ -93,7 +102,8 @@
       },
       total: 1,
       tableData: [],
-      searchId: '',
+      dialogVisible: false,
+      selected: null,
       loading: true,
     };
   },
@@ -110,8 +120,19 @@
       });
     },
 
-    convertName: function (scope) {
-      return scope.row.Name.split(' ').join('-');
+    convertName: function (team) {
+      return team.Name.split(' ').join('-');
     },
+
+    handleMoreInfoClick(team) {
+      window.open('https://www.formula1.com/en/teams/' + this.convertName(team) + '.html', '_blank');
+    },
+
+    handleCardClick(team) {
+      this.selected = team;
+      this.$nextTick(() => {
+        this.dialogVisible = true;
+      });
+    }
   },
 };

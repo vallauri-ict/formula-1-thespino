@@ -2,6 +2,10 @@
 # formula-1-thespino
 Formula 1 CRUD project created during S.Y. 2019/2020
 
+
+![](https://raw.githubusercontent.com/vallauri-ict/formula-1-thespino/master/assets/f1-illustration.gif)
+
+
 ## Contributor
 Spinoni Giorgio - 5B INF - S.Y. 2019/20 - IIS G. Vallauri - Fossano (CN)<br>
 Teacher: Cambieri Oscar, Belliardo Diego
