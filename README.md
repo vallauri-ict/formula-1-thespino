@@ -3,7 +3,8 @@
 Formula 1 CRUD project created during S.Y. 2019/2020
 
 
-![](https://raw.githubusercontent.com/vallauri-ict/formula-1-thespino/master/assets/f1-illustration.gif)
+![](https://raw.githubusercontent.com/vallauri-ict/formula-1-thespino/master/assets/f1-web.png)
+
 
 
 ## Contributor
@@ -25,6 +26,10 @@ root
   |
   + FormulaOne.sln
 ```
+
+
+![](https://raw.githubusercontent.com/vallauri-ict/formula-1-thespino/master/assets/f1-illustration.gif)
+
 
 ## Prerequisites
 - [Visual Studio](https://visualstudio.microsoft.com): ^16.4.0 (2019)
